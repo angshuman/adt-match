@@ -1,0 +1,42 @@
+{
+  "@id": "dtmi:syncservicetests:anothertype;2",
+  "@type": "Interface",
+  "displayName": "Test Model",
+  "@context": "dtmi:dtdl:context;2",
+  "contents": [
+    {
+      "@type": "Property",
+      "name": "name",
+      "displayName": "Name",
+      "schema": "string"
+    },
+    {
+      "@type": "Property",
+      "name": "level",
+      "displayName": "Level",
+      "schema": "double"
+    },
+    {
+      "@type": "Property",
+      "name": "temperature",
+      "displayName": "Temperature",
+      "schema": "double"
+    },
+    {
+      "@type": "Relationship",
+      "name": "contains",
+      "target": "dtmi:syncservicetests:anothertype;2",
+      "writable": true,
+      "properties": [
+        {
+          "@type": "Property",
+          "name": "length",
+          "displayName": "Length",
+          "description": "The length associated with the relationship.",
+          "writable": true,
+          "schema": "double"
+        }
+      ]
+    }
+  ]
+}
