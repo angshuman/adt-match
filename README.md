@@ -104,7 +104,7 @@ SELECT C FROM digitaltwins MATCH (A)-[:has|contains*1..3]->(B)-[:has|contains*2.
 
 In this query `(B)` is a set of intermediate nodes that are 2 or 3 hops away from A. The second part of the match clause expands the intermediate nodes to 3 or 4 levels. As a result we get a group of sub-trees that look like below.
 
-<img src="assets/subtrees.jpg" height=500> </img>
+<img src="assets/subtrees.jpg" height=300> </img>
 
 > Note: This visualization was generated using [ADT explorer](https://explorer.digitaltwins.azure.net/)
 
