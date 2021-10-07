@@ -71,7 +71,7 @@ SELECT P FROM digitaltwins MATCH (A)<-[*..3]-(P)-[*..3]->(B) WHERE A.$dtId = '11
 ```
 changes direction in the same MATCH clause. Semantically this would find a common ancestor of ndoes `(A)` and `(B)` within 3 levels.
 
-![subtrees](/assets/common.jpg)
+![ancestor](/assets/common.jpg)
 
 
 
@@ -115,7 +115,7 @@ In this query `(B)` is a set of intermediate nodes that are 2 or 3 hops away fro
 
 <style type="text/css">
     img {
-        width: 500px;
+        height: 400px;
     }
 </style>
 
