@@ -37,7 +37,7 @@ SELECT a.$dtId AS a_id, b.$dtId AS b_id FROM DIGITALTWINS MATCH (a)-[]->(b) WHER
 
 Note that here we are querying for a node with id '0' and all the nodes at a single hop distance. `()` represents a node and `[]` represents a single hop relationship. The number of hops can be increased in the query by adding a `*` clause in the relationship. For example - 
 
-### Variable hops
+### Number of hops
 
 |Query   |Returns nodes at hop distance    | Description |
 |---|---|---|
@@ -45,9 +45,6 @@ Note that here we are querying for a node with id '0' and all the nodes at a sin
 |`(r)-[*1..3]->(c)` | 2, 3 | `*` implies variable hop |
 |`(r)-[*3]->(c)` | 3 | `*3` implies exactly 3 hops |
 |`(r)-[*..5]->(c)` | 1,2,3,4,5 | `*..N` implies upto N hops |
-
- 
-
 
 
 ```sql
@@ -74,6 +71,8 @@ SELECT P FROM digitaltwins MATCH (A)<-[*..3]-(P)-[*..3]->(B) WHERE A.$dtId = '11
 ```
 changes direction in the same MATCH clause. Semantically this would find a common ancestor of ndoes `(A)` and `(B)` within 3 levels.
 
+![subtrees](/assets/common.jpg)
+
 > Note: MATCH supprots directed and undirected queries.
 
 <br>
@@ -97,6 +96,19 @@ This query filters on relationships with restrictions on the length properties.
 
 ### Cycle detection
 In a graph with circular paths MATCH would implicitly traverse each edge only once.
+
+### Complex MATCH operations with chains
+Consider the following query
+
+```sql
+SELECT C FROM digitaltwins MATCH (A)-[:has|contains*1..3]->(B)-[:has|contains*2..4]->(C) WHERE A.$dtId = '0'
+```
+
+In this query `(B)` is a set of intermediate nodes that are 2 or 3 hops away from A. The second part of the match clause expands the intermediate nodes to 3 or 4 levels. As a result we get a group of sub-trees that look like below.
+
+![subtrees](/assets/subtrees.jpg)
+
+> Note: This visualization was generated using [ADT explorer](https://explorer.digitaltwins.azure.net/)
 
 
 
