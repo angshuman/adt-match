@@ -4,7 +4,7 @@
 Azure Digital Twins has recently announced support for Variable Hop Queries. This is done through introducing a new MATCH keyword in the [Query Language](https://docs.microsoft.com/en-us/azure/digital-twins/concepts-query-language). This project explores various features of this type of queries through sample code. 
 
 ## Why
-In a Digital Twins representation of a complex system, it is often interesting to query nodes at a variable distance from each other. The data modelling could be such that the nodes of interest can be connected with different number of hops. In addition to this a query may have to look at both directions to find the results. `MATCH` enables these business scenarios simpler to query.
+In a Digital Twins representation of a complex system, it is often interesting to query nodes at a variable distance from each other. The data modelling could be such that the nodes of interest can be connected with different number of hops. In addition to this a query may have to look at both directions to find the results. `MATCH` makes these business scenarios simpler to query.
 
 ## Setup
 
@@ -73,6 +73,8 @@ changes direction in the same MATCH clause. Semantically this would find a commo
 
 ![subtrees](/assets/common.jpg)
 
+
+
 > Note: MATCH supprots directed and undirected queries.
 
 <br>
@@ -111,7 +113,11 @@ In this query `(B)` is a set of intermediate nodes that are 2 or 3 hops away fro
 > Note: This visualization was generated using [ADT explorer](https://explorer.digitaltwins.azure.net/)
 
 
-
+<style type="text/css">
+    img {
+        width: 500px;
+    }
+</style>
 
 
 
