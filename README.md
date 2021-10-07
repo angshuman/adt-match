@@ -71,14 +71,11 @@ SELECT P FROM digitaltwins MATCH (A)<-[*..3]-(P)-[*..3]->(B) WHERE A.$dtId = '11
 ```
 changes direction in the same MATCH clause. Semantically this would find a common ancestor of ndoes `(A)` and `(B)` within 3 levels.
 
-![ancestor](/assets/common.jpg)
-
-
+<img src="assets/common.jpg" height=300> </img>
 
 > Note: MATCH supprots directed and undirected queries.
 
 <br>
-
 
 ### Query on relationships
 Relationship names can be provided  with the `:` notation. 
@@ -95,7 +92,6 @@ SELECT c.$dtId, c.level, r1.Length AS r1_length, r2.Length AS r2_length FROM DIG
 ```
 This query filters on relationships with restrictions on the length properties.
 
-
 ### Cycle detection
 In a graph with circular paths MATCH would implicitly traverse each edge only once.
 
@@ -108,16 +104,10 @@ SELECT C FROM digitaltwins MATCH (A)-[:has|contains*1..3]->(B)-[:has|contains*2.
 
 In this query `(B)` is a set of intermediate nodes that are 2 or 3 hops away from A. The second part of the match clause expands the intermediate nodes to 3 or 4 levels. As a result we get a group of sub-trees that look like below.
 
-![subtrees](/assets/subtrees.jpg)
+<img src="assets/subtrees.jpg" height=500> </img>
 
 > Note: This visualization was generated using [ADT explorer](https://explorer.digitaltwins.azure.net/)
 
-
-<style type="text/css">
-    img {
-        height: 400px;
-    }
-</style>
 
 
 
